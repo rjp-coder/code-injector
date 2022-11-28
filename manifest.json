@@ -1,0 +1,28 @@
+{
+    "manifest_version": 2,
+    "name": "code-injector",
+    "version": "1.0",
+  
+    "description": "Allows custom insertion of code to be run on specific websites when they load. Use at your own peril",
+    "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/beastify",
+    "icons": {
+      "48": "icons/beasts-48.png"
+    },
+  
+    "permissions": [
+      "activeTab"
+    ],
+  
+    "browser_action": {
+      "default_icon": "icons/beasts-32.png",
+      "default_title": "code-injector",
+      "default_popup": "popup/choose_beast.html"
+    },
+  
+    "web_accessible_resources": [
+      "beasts/frog.jpg",
+      "beasts/turtle.jpg",
+      "beasts/snake.jpg"
+    ]
+  }
+  
