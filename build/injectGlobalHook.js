@@ -8,7 +8,9 @@
         }
         window.__codeInjectorInitialised__=true;
         console.debug("code injector extension is running...");
-        let easyUrl = window.location.origin.split("//")[1];
+        let easyUrl = window.location.toString();
+        easyUrl = easyUrl.replace("www.","").replace("https://","").replace("http://","").replace("#","").replace(/\/.*/,"");
+
         let codeToInject;
         try {
             codeToInject = await browser.storage.local.get(easyUrl); //Really!? the browser storage api has no way to access the value directly
