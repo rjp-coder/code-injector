@@ -1,3 +1,15 @@
 textarea{
     display:block;
 }
+.banner{
+    font-size:0.8rem;
+    background-color:lightgreen;
+    animation:fadeOut linear 2s;
+    animation-delay:1s;
+    margin-top:-1rem;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0.2; }
+  }

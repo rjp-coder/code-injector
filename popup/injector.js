@@ -6,18 +6,16 @@ function listenForClicks() {
       if (!website) return;
   
       if (e.target.id == "save" && code) {
-        console.log(`Saving code for ${website}`);
+        let banner = showBanner(`Saving code for ${website}`);
         browser.storage.local.set({[website]:code}).then(()=>{
-          console.log("Successfully saved code")
+          banner.textContent = "Successfully saved code";
         });
     } else if (e.target.id =="delete") {
-        console.log(`Deleting code for ${website}`);
+        let banner = showBanner(`Deleting code for ${website}`);
         browser.storage.local.remove(website).then(()=>{
-          console.log("Successfully deleted code")
+          banner.textContent = "Successfully deleted code";
         });
-      } else {
-        console.log("clicked on not a button")
-      }
+      } 
     });
 
     setTimeout(()=>{      
@@ -26,16 +24,28 @@ function listenForClicks() {
         website.value=window.location.origin.split("www.")[1];
         browser.tabs.query({currentWindow: true, active: true}).then((tabs)=>{
           let url = tabs[0].url
-          console.log(url)
           url  = url.replace("www.","").replace("https://","").replace("http://","").replace("#","").replace(/\/.*/,"");
-          console.log(url);
           website.value = url;
         },console.error)        
       } else {
-        console.log("no website elem... :(")
+        console.error("Code injector: no website element found ");
       }
     },200)
   }
  
+  function showBanner(msg){
+    const div = document.createElement("div");
+    div.className="banner";
+    div.textContent=msg;
+    let section = document.querySelector("section");
+    if (section){
+      section.before(div);
+      setTimeout(()=>{
+        if (div) div.remove();
+      },2500)
+    }
+    return div;
+  }
+
   listenForClicks();
   console.log("injector.js finished");  
