@@ -1,8 +1,5 @@
-//TODO add a menu for configuring website and code
-
- (async ()=>{
+document.addEventListener("DOMContentLoaded", async ()=>{
     try {
-
         if (window.__codeInjectorInitialised__){
             return;
         }
@@ -28,12 +25,6 @@
             console.debug("Injecting " + codeToInject.length + " characters of code ...")
             eval(codeToInject);
         }
-        
-        // let code = prompt("Enter code here")
-        // if (code){
-        //     browser.storage.local.set({[easyUrl]:code});
-        //     alert("code saved");
-        // }
 
     } catch (err){
         console.log(err.toString());
@@ -42,4 +33,5 @@
 
 
 
-})()
+})
+
