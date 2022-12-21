@@ -10,19 +10,32 @@
     },
   
     "permissions": [
-      "activeTab"
+      "activeTab",
+      "storage"
     ],
-  
-    "browser_action": {
-      "default_icon": "icons/beasts-32.png",
-      "default_title": "code-injector",
-      "default_popup": "popup/choose_beast.html"
-    },
   
     "web_accessible_resources": [
       "beasts/frog.jpg",
       "beasts/turtle.jpg",
       "beasts/snake.jpg"
-    ]
+    ],
+
+    "content_scripts": [
+      {
+        "matches": [
+          "<all_urls>"
+        ],
+        "js": [
+          "build/injectGlobalHook.js"
+        ],
+        "run_at": "document_start"
+      }
+    ],
+
+    "background": {
+      "scripts": []
+    }
+
+    
   }
   
