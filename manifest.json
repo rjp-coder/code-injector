@@ -32,6 +32,12 @@
       }
     ],
 
+    "browser_action": {
+      "default_icon": "icons/beasts-32.png",
+      "default_title": "Injector",
+      "default_popup": "popup/injector.html"
+    },
+
     "background": {
       "scripts": []
     }
